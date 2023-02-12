@@ -7,17 +7,16 @@ namespace Surface\LaravelWebfinger\Http\Controllers\Wellknown;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Surface\LaravelWebfinger\Http\Resources\Webfinger;
-use Surface\LaravelWebfinger\Service\Webfinger as Service;
+use Surface\LaravelWebfinger\Http\Resources\Webfinger as Resource;
 
 final class WebfingerController extends Controller
 {
-    public function __construct(protected Service $service)
+    public function __construct(protected Resource $resource)
     {
     }
 
     public function __invoke(Request $request): JsonResponse
     {
-        return Webfinger::make(...$this->service->toArray())->toResponse($request);
+        return $this->resource->toResponse($request);
     }
 }

@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Surface\LaravelWebfinger;
 
-use Illuminate\Support\Facades\Config;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Surface\LaravelWebfinger\Service\Webfinger;
+use Surface\LaravelWebfinger\Http\Resources\Webfinger as Resource;
+use Surface\LaravelWebfinger\Service\Webfinger as Service;
 
 class LaravelWebfingerServiceProvider extends ServiceProvider
 {
@@ -34,8 +35,26 @@ class LaravelWebfingerServiceProvider extends ServiceProvider
     protected function bindService(): void
     {
         $this->app->bind(
-            Webfinger::class,
-            static fn () => new Webfinger(...Config::get('webfinger', []))
+            Service::class,
+            static function (Application $app): Service {
+                /** @var \Illuminate\Config\Repository $config */
+                $config = $app->get('config');
+
+                /** @var array<string, string> $items */
+                $items = $config->get('webfinger', []);
+
+                return new Service(...$items);
+            }
+        );
+
+        $this->app->bind(
+            Resource::class,
+            static function (Application $app): Resource {
+                /** @var \Surface\LaravelWebfinger\Service\Webfinger $service */
+                $service = $app->make(Service::class);
+
+                return new Resource(...$service);
+            }
         );
     }
 }
