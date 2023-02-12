@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Only iterables can be unpacked, mixed given in argument \\#1\\.$#"
+			count: 1
+			path: src/LaravelWebfingerServiceProvider.php
+
+		-
+			message: "#^Parameter \\#1 \\$instance of class Surface\\\\LaravelWebfinger\\\\Service\\\\Webfinger constructor expects string, mixed given\\.$#"
+			count: 1
+			path: src/LaravelWebfingerServiceProvider.php

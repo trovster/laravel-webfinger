@@ -1,0 +1,74 @@
+name: Code Style & Static Analysis
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  phpstan:
+    name: Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+          tools: composer, phpstan, phpcs
+
+      - name: Install composer dependencies
+        run: composer install --prefer-dist --no-interaction --no-suggest
+
+      - name: List installed dependencies
+        run: composer show -D
+
+      - name: Run PHPStan
+        run: ./vendor/bin/phpstan --error-format=github
+
+  phpcs:
+    name: PHP Code Style
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+          tools: composer, phpcs
+
+      - name: Install composer dependencies
+        run: composer install --prefer-dist --no-interaction --no-suggest
+
+      - name: List installed dependencies
+        run: composer show -D
+
+      - name: Run PHP Code Sniffer
+        run: ./vendor/bin/phpcs -s
+
+  insights:
+    name: PHP Insights
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+          coverage: none
+          tools: composer
+
+      - name: Install composer dependencies
+        run: composer install --prefer-dist --no-interaction --no-suggest
+
+      - name: List installed dependencies
+        run: composer show -D
+
+      - name: Run PHP Insights
+        run: ./vendor/bin/phpinsights analyse --no-interaction --disable-security-check -n --ansi --format=github-action

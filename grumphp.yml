@@ -1,0 +1,10 @@
+grumphp:
+    tasks:
+        phpstan:
+        phpcs:
+        phpunit:
+        composer_script:
+            script: insights
+        clover_coverage:
+            clover_file: ./code-analysis/logs/clover.xml
+            level: 100

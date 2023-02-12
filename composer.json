@@ -1,0 +1,76 @@
+{
+    "name": "surface/laravel-webfinger",
+    "description": "A Laravel package to create an ActivityPub webfinger",
+    "version": "1.0.0",
+    "keywords": [
+        "trovster",
+        "laravel",
+        "laravel-webfinger",
+        "webfinger",
+        "ActivityPub",
+        "Mastodon"
+    ],
+    "homepage": "https://github.com/trovster/laravel-webfinger",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Trevor Morris",
+            "email": "code@trovster.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/contracts": "^9.0|^10.0",
+        "illuminate/http": "^9.0|^10.0",
+        "illuminate/support": "^9.0|^10.0"
+    },
+    "require-dev": {
+        "nunomaduro/collision": "^6.4",
+        "nunomaduro/larastan": "^2.4",
+        "nunomaduro/phpinsights": "^2.7",
+        "orchestra/testbench": "^7.0|^8.0",
+        "phpro/grumphp": "^1.15",
+        "phpstan/phpstan": "^1.9",
+        "phpunit/phpunit": "^9.6",
+        "slevomat/coding-standard": "^8.8",
+        "squizlabs/php_codesniffer": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Surface\\LaravelWebfinger\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Surface\\LaravelWebfinger\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+        "post-install-cmd": "@php ./vendor/bin/grumphp git:init",
+        "grum": "@php ./vendor/bin/grumphp run",
+        "sniff": "@grum --tasks=phpcs",
+        "analyse": "@grum --tasks=phpstan",
+        "insights": "./vendor/bin/phpinsights analyse",
+        "test": "./vendor/bin/phpunit"
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpro/grumphp": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Surface\\LaravelWebfinger\\LaravelWebfingerServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

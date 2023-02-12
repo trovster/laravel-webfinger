@@ -1,0 +1,17 @@
+includes:
+    - phpstan-baseline.neon
+
+parameters:
+    level: 9
+    paths:
+        - config
+        - routes
+        - src
+        - tests
+    tmpDir: code-analysis/phpstan
+    ignoreErrors:
+        -
+            message: '#Class PHP_CodeSniffer\\[a-zA-Z0-9\\_]+ not found#'
+            path: ./phpinsights.php
+            count: 1
+
