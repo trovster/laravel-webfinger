@@ -8,15 +8,22 @@ on:
 
 jobs:
   phpstan:
-    name: Static Analysis
-    runs-on: ubuntu-latest
+    name: Static Analysis - ${{ matrix.os }} - PHP ${{ matrix.php }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest]
+        php: [8.1, 8.2]
+
     steps:
       - uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: ${{ matrix.php }}
           coverage: none
           tools: composer, phpstan, phpcs
 
@@ -30,15 +37,22 @@ jobs:
         run: ./vendor/bin/phpstan --error-format=github
 
   phpcs:
-    name: PHP Code Style
-    runs-on: ubuntu-latest
+    name: PHP Code Style - ${{ matrix.os }} - PHP ${{ matrix.php }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest]
+        php: [8.1, 8.2]
+
     steps:
       - uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: ${{ matrix.php }}
           coverage: none
           tools: composer, phpcs
 
@@ -52,15 +66,22 @@ jobs:
         run: ./vendor/bin/phpcs -s
 
   insights:
-    name: PHP Insights
-    runs-on: ubuntu-latest
+    name: PHP Insights - ${{ matrix.os }} - PHP ${{ matrix.php }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: true
+      matrix:
+        os: [ubuntu-latest]
+        php: [8.1, 8.2]
+
     steps:
       - uses: actions/checkout@v3
 
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: ${{ matrix.php }}
           coverage: none
           tools: composer
 
