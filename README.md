@@ -1,9 +1,8 @@
-# Create an ActivityPub webfinger
+# Create an webfinger in Laravel
 
-This creates a webfinger URL which denotes your profile on ActivityPub.
-
-Once installed you should see your JSON webfinger profile at `/.well-known/webfinger`.
-
+This creates a [webfinger](https://webfinger.net), a way to attach information
+to an email address, or other online resource. Once installed you should see your
+JSON webfinger profile at `/.well-known/webfinger`.
 
 ## Installation
 
@@ -16,7 +15,7 @@ composer require surface/laravel-webfinger
 You must add the configuration to your `.env` file:
 
 ```bash
-WEBFINGER_INSTANCE=activityPub.instance
+WEBFINGER_INSTANCE=mastodon.instance
 WEBFINGER_USERNAME=your-username
 ```
 
