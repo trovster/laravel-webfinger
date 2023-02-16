@@ -1,8 +1,8 @@
-# Create an webfinger in Laravel
+# Create a Webfinger in Laravel
 
 This creates a [webfinger](https://webfinger.net), a way to attach information
-to an email address, or other online resource. Once installed you should see your
-JSON webfinger profile at `/.well-known/webfinger`.
+to an email address, or an other online resource. Once installed you should see
+your JSON webfinger profile at `/.well-known/webfinger`.
 
 ## Installation
 
