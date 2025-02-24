@@ -1,8 +1,8 @@
 {
     "name": "surface/laravel-webfinger",
     "description": "A Laravel package to create an ActivityPub webfinger.",
-    "version": "1.2.0",
-    "time": "2023-03-12",
+    "version": "1.2.1",
+    "time": "2025-02-24",
     "keywords": [
         "trovster",
         "laravel",
