@@ -1,8 +1,6 @@
 {
     "name": "surface/laravel-webfinger",
     "description": "A Laravel package to create an ActivityPub webfinger.",
-    "version": "2.0.0",
-    "time": "2025-02-24",
     "keywords": [
         "trovster",
         "laravel",
@@ -30,13 +28,13 @@
         "illuminate/support": "^10.0|^11.0|^12.0"
     },
     "require-dev": {
-        "nunomaduro/collision": "^6.4|^8.5.0",
+        "nunomaduro/collision": "^6.4|^8.6.1",
         "larastan/larastan": "^2.9.14",
         "nunomaduro/phpinsights": "^2.12",
         "orchestra/testbench": "^7.0|^8.21.1|^9.11",
         "phpro/grumphp": "^2.10",
         "phpstan/phpstan": "^1.12.19",
-        "phpunit/phpunit": "^9.6.17|^10.5.45",
+        "phpunit/phpunit": "^9.6.17|^10.5.45|^11.5.9",
         "slevomat/coding-standard": "^8.16",
         "squizlabs/php_codesniffer": "^3.11.3"
     },
