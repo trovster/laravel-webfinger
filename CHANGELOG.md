@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/trovster/laravel-webfinger/compare/v2.0.0...v3.0.0) (2026-03-17)
+
+### Feature
+
+* support for laravel 13 ([c7de089](https://github.com/trovster/laravel-webfinger/commit/c7de089b95505220d4a8e2f21d76857b433717a4))
+
 ## [2.0.0](https://github.com/trovster/laravel-webfinger/compare/v1.2.1...v2.0.0) (2025-02-24)
 
 
